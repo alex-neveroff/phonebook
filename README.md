@@ -1,1 +1,2 @@
-HW07. Refactoring of Phonebook («Книга контактів»): interaction with the backend for storing contacts.
+Phonebook («Книга контактів»): an application for storing the phone numbers of
+everyone you know
