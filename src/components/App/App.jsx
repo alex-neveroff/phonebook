@@ -1,44 +1,42 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
-import { Container } from './App.styled';
-import ContactForm from 'components/ContactForm';
-import ContactList from 'components/ContactList';
-import SearchFilter from 'components/SearchFilter';
-import Notification from 'components/Notification';
-import Loader from 'components/Loader/Loader';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import Layout from 'components/Layout/Layout';
+import { PrivateRoute } from 'components/Navigation/PrivateRoute';
+import { RestrictedRoute } from 'components/Navigation/RestrictedRoute';
+import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  const Contacts = lazy(() => import('../../pages/Contacts'));
+  const Home = lazy(() => import('../../pages/Home'));
+  const Login = lazy(() => import('../../pages/Login'));
+  const Registration = lazy(() => import('../../pages/Registration'));
+
   return (
-    <Container>
-      <h1 className="title main-title">Phonebook</h1>
-      <ContactForm />
-      <h2 className="title sub-title">Contacts</h2>
-      {contacts.length > 0 ? (
-        <>
-          <SearchFilter />
-          {isLoading && !error && <Loader />}
-          {contacts.length > 0 ? (
-            <ContactList />
-          ) : (
-            <Notification message="No matches found" />
-          )}
-        </>
-      ) : (
-        <Notification message="Your phonebook is empty" />
-      )}
-      {error && <Notification message={error} />}
-    </Container>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="registration"
+          element={
+            <RestrictedRoute component={Registration} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="login"
+          element={<RestrictedRoute component={Login} redirectTo="/contacts" />}
+        />
+        <Route
+          path="contacts"
+          element={<PrivateRoute component={Contacts} redirectTo="/login" />}
+        />
+      </Route>
+    </Routes>
   );
 };
 
