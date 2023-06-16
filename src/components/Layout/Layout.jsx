@@ -9,9 +9,11 @@ const Layout = () => {
       <header>
         <Navigation />
       </header>
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <main>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </main>
     </div>
   );
 };

@@ -1,22 +1,19 @@
-// import { useSelector } from 'react-redux';
-// import { AuthNav } from '../AuthNav/AuthNav';
-// import { UserMenu } from 'components/UserMenu/UserMenu';
-// import { selectIsAuthorized } from '../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+import { selectIsAuthorized } from '../../redux/auth/authSelectors';
+import { NavLink } from 'react-router-dom';
 import AuthNav from 'components/AuthNav/AuthNav';
 import UserMenu from 'components/UserMenu/UserMenu';
-import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
+  const isAuthorized = useSelector(selectIsAuthorized);
   return (
-    <header>
+    <>
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/contacts">Contacts</NavLink>
       </nav>
-      {/* {isAuthorized ? <UserMenu /> : <AuthNav />} */}
-      <UserMenu />
-      <AuthNav />
-    </header>
+      {isAuthorized ? <UserMenu /> : <AuthNav />}
+    </>
   );
 };
 
