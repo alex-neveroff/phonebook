@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import { fetchContacts, addContact, deleteContact } from './contactsOperations';
 
-export const phonebookSlice = createSlice({
+const contactsInitialState = {
+  contacts: [],
+  isLoading: false,
+  error: null,
+  filter: '',
+};
+
+export const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    contacts: [],
-    isLoading: false,
-    error: null,
-    filter: '',
-  },
+  initialState: contactsInitialState,
 
   extraReducers: builder =>
     builder
@@ -60,4 +62,4 @@ export const phonebookSlice = createSlice({
   },
 });
 
-export const { filterReducer } = phonebookSlice.actions;
+export const { filterReducer } = contactsSlice.actions;

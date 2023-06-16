@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/operations';
 import { ReactComponent as CrossIcon } from 'icons/cross.svg';
 import { ContactData } from './ContactListItem.styled';
 import { Notify } from 'notiflix';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 
 const ContactListItem = ({ id, name, phone }) => {
   const contacts = useSelector(selectContacts);

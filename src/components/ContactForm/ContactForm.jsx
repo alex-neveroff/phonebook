@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PhonebookForm } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
-import { addContact } from '../../redux/operations';
+import { addContact } from 'redux/contacts/contactsOperations';
 
 const ContactForm = () => {
   const [inputName, setInputName] = useState('');

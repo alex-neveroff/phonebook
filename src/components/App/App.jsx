@@ -1,10 +1,10 @@
 import React, { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
 import Layout from 'components/Layout/Layout';
 import { PrivateRoute } from 'components/Navigation/PrivateRoute';
 import { RestrictedRoute } from 'components/Navigation/RestrictedRoute';
 import { Route, Routes } from 'react-router-dom';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 
 const App = () => {
   const dispatch = useDispatch();

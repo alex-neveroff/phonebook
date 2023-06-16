@@ -1,6 +1,6 @@
 import { SearchForm } from 'components/SearchFilter/SearchFilter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterReducer } from 'redux/phonebookSlice';
+import { filterReducer } from 'redux/contacts/contactsSlice';
 
 const SearchFilter = () => {
   const filter = useSelector(state => state.contacts.filter);

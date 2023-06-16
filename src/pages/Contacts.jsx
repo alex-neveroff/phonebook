@@ -5,7 +5,11 @@ import SearchFilter from 'components/SearchFilter';
 import Notification from 'components/Notification';
 import Loader from 'components/Loader/Loader';
 import { useSelector } from 'react-redux';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+} from 'redux/contacts/contactsSelectors';
 
 const Contacts = () => {
   const contacts = useSelector(selectContacts);
