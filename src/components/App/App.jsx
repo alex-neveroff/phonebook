@@ -4,14 +4,14 @@ import Layout from 'components/Layout/Layout';
 import { PrivateRoute } from 'components/Navigation/PrivateRoute';
 import { RestrictedRoute } from 'components/Navigation/RestrictedRoute';
 import { Route, Routes } from 'react-router-dom';
-import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { selectIsRefreshing } from 'redux/auth/authSelectors';
+import { refreshCurrentUser } from 'redux/auth/authOperations';
 
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshCurrentUser());
   }, [dispatch]);
 
   const Contacts = lazy(() => import('../../pages/Contacts'));

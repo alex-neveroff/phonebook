@@ -1,12 +1,24 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
+
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+
+const authToken = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+};
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const contacts = await axios.get('/contacts');
-      return contacts.data;
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      authToken.set(persistedToken);
+      const { data } = await axios.get('/contacts');
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -15,10 +27,14 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async (contact, thunkAPI) => {
+  async (newContact, thunkAPI) => {
     try {
-      const contacts = await axios.post('/contacts', contact);
-      return contacts.data;
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      authToken.set(persistedToken);
+      const { data } = await axios.post('/contacts', newContact);
+      Notify.success(`${newContact.name} added to phonebook successfully!`);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -29,8 +45,12 @@ export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
-      const contacts = await axios.delete(`/contacts/${contactId}`);
-      return contacts.data.id;
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      authToken.set(persistedToken);
+      const { data } = await axios.delete(`/contacts/${contactId}`);
+      Notify.warning(`${data.name} delete from phonebook.`);
+      return data.id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

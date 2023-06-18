@@ -23,7 +23,7 @@ const ContactForm = () => {
     event.preventDefault();
     const newContact = {
       name: inputName,
-      phone: inputNumber,
+      number: inputNumber,
     };
     const loweredNewContact = newContact.name.toLowerCase();
     const isContactExists = contacts.some(
@@ -34,7 +34,7 @@ const ContactForm = () => {
       return;
     }
     dispatch(addContact(newContact));
-    Notify.success(`${newContact.name} added to phonebook successfully!`);
+
     reset();
   };
 

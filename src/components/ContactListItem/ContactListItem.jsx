@@ -1,25 +1,20 @@
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ReactComponent as CrossIcon } from 'icons/cross.svg';
 import { ContactData } from './ContactListItem.styled';
-import { Notify } from 'notiflix';
-import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 
-const ContactListItem = ({ id, name, phone }) => {
-  const contacts = useSelector(selectContacts);
+const ContactListItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   const handleDelete = contactId => {
-    const contactName = contacts.find(contact => contact.id === contactId);
     dispatch(deleteContact(contactId));
-    Notify.warning(`${contactName.name} delete from phonebook.`);
   };
 
   return (
     <ContactData key={id}>
       <p className="contact-name">{name}:</p>{' '}
-      <p className="contact-number">{phone}</p>
+      <p className="contact-number">{number}</p>
       <button className="delete-button" onClick={() => handleDelete(id)}>
         <CrossIcon className="cross" width="24" height="24" />
       </button>
@@ -30,7 +25,7 @@ const ContactListItem = ({ id, name, phone }) => {
 ContactListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
 
 export default ContactListItem;
