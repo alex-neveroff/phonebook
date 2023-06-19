@@ -6,7 +6,10 @@ export const PhonebookForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-bottom: 30px;
+  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    width: 600px;
+  }
 
   .form-label {
     display: flex;
@@ -51,5 +54,3 @@ export const PhonebookForm = styled.form`
     }
   }
 `;
-
-export const SubmitContact = styled.button``;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registration, login } from 'redux/auth/authOperations';
+import { StyledAuthForm } from './AuthForm.styled';
 
 const AuthForm = ({ isRegistration }) => {
   const dispatch = useDispatch();
@@ -38,14 +39,15 @@ const AuthForm = ({ isRegistration }) => {
   };
 
   return (
-    <form
+    <StyledAuthForm
       onSubmit={isRegistration ? registrationSubmit : loginSubmit}
       autoComplete="off"
     >
       {isRegistration && (
-        <label htmlFor="name">
+        <label className="form-label" htmlFor="name">
           Name:
           <input
+            className="form-input"
             id="name"
             type="text"
             name="name"
@@ -57,9 +59,10 @@ const AuthForm = ({ isRegistration }) => {
         </label>
       )}
 
-      <label htmlFor="email">
+      <label className="form-label" htmlFor="email">
         Email:
         <input
+          className="form-input"
           id="email"
           type="text"
           name="email"
@@ -69,9 +72,10 @@ const AuthForm = ({ isRegistration }) => {
           required
         />
       </label>
-      <label htmlFor="password">
+      <label className="form-label" htmlFor="password">
         Password
         <input
+          className="form-input"
           id="password"
           type="password"
           name="password"
@@ -82,11 +86,15 @@ const AuthForm = ({ isRegistration }) => {
         />
       </label>
       {isRegistration ? (
-        <button type="submit">Sign Up</button>
+        <button className="form-submit" type="submit">
+          Sign Up
+        </button>
       ) : (
-        <button type="submit">Log In</button>
+        <button className="form-submit" type="submit">
+          Log In
+        </button>
       )}
-    </form>
+    </StyledAuthForm>
   );
 };
 

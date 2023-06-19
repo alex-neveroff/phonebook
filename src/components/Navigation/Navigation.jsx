@@ -5,9 +5,15 @@ import { NavLink } from 'react-router-dom';
 const Navigation = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      {isAuthorized && <NavLink to="/contacts">Contacts</NavLink>}
+    <nav className="navigation">
+      <NavLink className="navigationLink" to="/">
+        Home
+      </NavLink>
+      {isAuthorized && (
+        <NavLink className="navigationLink" to="/contacts">
+          Contacts
+        </NavLink>
+      )}
     </nav>
   );
 };

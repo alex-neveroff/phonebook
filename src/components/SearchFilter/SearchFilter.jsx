@@ -12,11 +12,11 @@ const SearchFilter = () => {
 
   return (
     <SearchForm htmlFor="filter-field">
-      Find contacts by name
       <input
         className="search-input"
         id="filter-field"
         type="text"
+        placeholder="Find contacts by name"
         value={filter}
         onChange={handleFilter}
       />

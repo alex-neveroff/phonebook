@@ -27,13 +27,12 @@ const Contacts = () => {
 
   return (
     <>
-      <h1 className="title main-title">Phonebook</h1>
+      <h1 className="title main-title">Contacts</h1>
       <ContactForm />
-      <h2 className="title sub-title">Contacts</h2>
+      <SearchFilter />
       {error && <Notification message={error} />}
       {contacts.length > 0 ? (
         <>
-          <SearchFilter />
           {isLoading && !error && <Loader />}
           {contacts.length > 0 ? (
             <ContactList />

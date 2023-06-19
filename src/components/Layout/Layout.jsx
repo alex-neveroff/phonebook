@@ -6,12 +6,13 @@ import { useSelector } from 'react-redux';
 import { selectIsAuthorized } from 'redux/auth/authSelectors';
 import UserMenu from 'components/UserMenu/UserMenu';
 import AuthNav from 'components/AuthNav/AuthNav';
+import { Container } from './Layoyt.styled';
 
 const Layout = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
   return (
-    <div>
-      <header>
+    <Container>
+      <header className="header">
         <Navigation />
         {isAuthorized ? <UserMenu /> : <AuthNav />}
       </header>
@@ -20,7 +21,7 @@ const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
-    </div>
+    </Container>
   );
 };
 

@@ -8,6 +8,10 @@ export const SearchForm = styled.label`
   gap: 10px;
   font-size: 18px;
   font-weight: bold;
+  margin: 0 auto;
+  @media screen and (min-width: 768px) {
+    width: 600px;
+  }
 
   .search-input {
     height: 30px;

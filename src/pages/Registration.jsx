@@ -4,10 +4,10 @@ import React from 'react';
 const Registration = () => {
   const isRegistration = true;
   return (
-    <div>
-      <title>Registration</title>
+    <>
+      <h1 className="title sub-title">Registration</h1>
       <AuthForm isRegistration={isRegistration} />
-    </div>
+    </>
   );
 };
 
