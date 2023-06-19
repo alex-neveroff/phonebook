@@ -7,9 +7,6 @@ export const PhonebookForm = styled.form`
   flex-direction: column;
   gap: 30px;
   margin: 0 auto;
-  @media screen and (min-width: 768px) {
-    width: 600px;
-  }
 
   .form-label {
     display: flex;

@@ -3,15 +3,31 @@ import { transitions } from 'variables/transitions';
 import { colors } from 'variables/colors';
 
 export const ContactData = styled.li`
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 18px;
 
-  .contact-number {
-    justify-self: center;
+  .contact-align {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    gap: 5px;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
-  .delete-button {
+
+  .contact-number {
+    font-weight: 500;
+  }
+  .button-wrap {
+    display: flex;
+    gap: 4px;
+  }
+  .contact-button {
     cursor: pointer;
     width: 24px;
     height: 24px;
@@ -19,8 +35,8 @@ export const ContactData = styled.li`
     padding: 0;
 
     background-color: transparent;
-    justify-self: end;
-    color: red;
+
+    color: ${colors.darkShadow};
     transition: color ${transitions.transition},
       box-shadow ${transitions.transition};
 
@@ -28,16 +44,18 @@ export const ContactData = styled.li`
     &:focus {
       box-shadow: 0px 0px 15px ${colors.focusShadow};
       outline: none;
+      color: red;
     }
     &:active {
       color: ${colors.mainShadow};
     }
   }
-  .cross {
+  .icon {
     display: block;
     width: 100%;
     height: 100%;
     pointer-events: none;
     stroke: currentColor;
+    fill: currentColor;
   }
 `;

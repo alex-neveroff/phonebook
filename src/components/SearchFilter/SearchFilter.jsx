@@ -1,9 +1,18 @@
+import React from 'react';
 import { SearchForm } from 'components/SearchFilter/SearchFilter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterReducer } from 'redux/contacts/contactsSlice';
+import { filterReducer, modalReducer } from 'redux/contacts/contactsSlice';
+import Modal from 'components/Modal/Modal';
+import ContactForm from 'components/ContactForm/ContactForm';
+import { ReactComponent as AddIcon } from 'icons/add.svg';
+import {
+  selectFilter,
+  selectIsShowModal,
+} from 'redux/contacts/contactsSelectors';
 
 const SearchFilter = () => {
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(selectFilter);
+  const isShowModal = useSelector(selectIsShowModal);
   const dispatch = useDispatch();
 
   const handleFilter = event => {
@@ -12,6 +21,13 @@ const SearchFilter = () => {
 
   return (
     <SearchForm htmlFor="filter-field">
+      <button
+        className="contact-button"
+        onClick={() => dispatch(modalReducer(true))}
+      >
+        <AddIcon className="icon" width="30" height="30" />
+      </button>
+
       <input
         className="search-input"
         id="filter-field"
@@ -20,6 +36,11 @@ const SearchFilter = () => {
         value={filter}
         onChange={handleFilter}
       />
+      {isShowModal && (
+        <Modal onClose={() => dispatch(modalReducer(false))}>
+          <ContactForm />
+        </Modal>
+      )}
     </SearchForm>
   );
 };

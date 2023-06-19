@@ -3,12 +3,14 @@ import { PhonebookForm } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { addContact } from 'redux/contacts/contactsOperations';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { modalReducer } from 'redux/contacts/contactsSlice';
 
 const ContactForm = () => {
   const [inputName, setInputName] = useState('');
   const [inputNumber, setInputNumber] = useState('');
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(selectContacts);
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -34,7 +36,7 @@ const ContactForm = () => {
       return;
     }
     dispatch(addContact(newContact));
-
+    dispatch(modalReducer(false));
     reset();
   };
 
@@ -76,7 +78,7 @@ const ContactForm = () => {
         />
       </label>
       <button className="form-submit" type="submit">
-        Add contact
+        Save contact
       </button>
     </PhonebookForm>
   );

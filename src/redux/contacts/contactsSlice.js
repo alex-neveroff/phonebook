@@ -4,6 +4,7 @@ import { fetchContacts, addContact, deleteContact } from './contactsOperations';
 const contactsInitialState = {
   contacts: [],
   isLoading: false,
+  isShowModal: false,
   error: null,
   filter: '',
 };
@@ -59,7 +60,10 @@ export const contactsSlice = createSlice({
     filterReducer(state, action) {
       state.filter = action.payload.toLowerCase();
     },
+   modalReducer(state, action) {
+      state.isShowModal = action.payload;
+    },
   },
 });
 
-export const { filterReducer } = contactsSlice.actions;
+export const { filterReducer, modalReducer } = contactsSlice.actions;

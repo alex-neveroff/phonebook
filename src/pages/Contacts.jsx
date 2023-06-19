@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import SearchFilter from 'components/SearchFilter';
 import Notification from 'components/Notification';
@@ -28,7 +27,6 @@ const Contacts = () => {
   return (
     <>
       <h1 className="title main-title">Contacts</h1>
-      <ContactForm />
       <SearchFilter />
       {error && <Notification message={error} />}
       {contacts.length > 0 ? (

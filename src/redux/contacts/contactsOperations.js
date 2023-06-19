@@ -56,3 +56,19 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
+
+export const editContact = createAsyncThunk(
+  'contacts/editContact',
+  async (contactId, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+      authToken.set(persistedToken);
+      const { data } = await axios.delete(`/contacts/${contactId}`);
+      Notify.warning(`${data.name} delete from phonebook.`);
+      return data.id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
