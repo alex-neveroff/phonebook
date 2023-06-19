@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { PhonebookForm } from './ContactForm.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { Notify } from 'notiflix';
-import { addContact } from 'redux/contacts/contactsOperations';
-import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { useDispatch } from 'react-redux';
+import { editContact } from 'redux/contacts/contactsOperations';
 import { modalReducer } from 'redux/contacts/contactsSlice';
+import { EditForm } from './EditContactForm.styled';
 
-const ContactForm = () => {
-  const [inputName, setInputName] = useState('');
-  const [inputNumber, setInputNumber] = useState('');
+const EditContactForm = ({ name, number, contactId }) => {
+  const [inputName, setInputName] = useState(name);
+  const [inputNumber, setInputNumber] = useState(number);
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+
+  //   console.log(inputName);
+  //   console.log(name);
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -23,20 +23,19 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const newContact = {
-      name: inputName,
-      number: inputNumber,
-    };
-    const loweredNewContact = newContact.name.toLowerCase();
-    const isContactExists = contacts.some(
-      contact => contact.name.toLowerCase() === loweredNewContact
-    );
-    if (isContactExists) {
-      Notify.failure(`${newContact.name} is already in phonebook.`);
+    if (inputName.trim() === '' || inputNumber.trim() === '') {
+      dispatch(modalReducer(true));
       return;
     }
-    dispatch(addContact(newContact));
+    dispatch(
+      editContact({
+        contactId,
+        name: inputName.trim(),
+        number: inputNumber.trim(),
+      })
+    );
     dispatch(modalReducer(false));
+    dispatch(editContact(contactId));
     reset();
   };
 
@@ -46,7 +45,7 @@ const ContactForm = () => {
   };
 
   return (
-    <PhonebookForm onSubmit={handleSubmit}>
+    <EditForm onSubmit={handleSubmit}>
       <label className="form-label" htmlFor="contactName">
         Name:
         <input
@@ -78,10 +77,10 @@ const ContactForm = () => {
         />
       </label>
       <button className="form-submit" type="submit">
-        Add contact
+        Edit contact
       </button>
-    </PhonebookForm>
+    </EditForm>
   );
 };
 
-export default ContactForm;
+export default EditContactForm;

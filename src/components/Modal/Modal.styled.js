@@ -19,7 +19,7 @@ export const ModalWindow = styled.div`
   border-radius: 10px;
   background-color: #fff;
   overflow: hidden;
-  box-shadow: 0px 0px 10px ${colors.darkShadow};
+  box-shadow: 0px 0px 10px ${colors.mainShadow};
   @media screen and (min-width: 768px) {
     width: 450px;
   }

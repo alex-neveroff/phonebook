@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOperations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from './contactsOperations';
 
 const contactsInitialState = {
   contacts: [],
@@ -54,13 +59,31 @@ export const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(editContact.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.isLoading = false;
+        state.error = null;
+        state.contacts = state.contacts.map(contact => {
+          if (contact.id === action.payload.id) {
+            return action.payload;
+          }
+          return contact;
+        });
+      })
+      .addCase(editContact.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       }),
 
   reducers: {
     filterReducer(state, action) {
       state.filter = action.payload.toLowerCase();
     },
-   modalReducer(state, action) {
+    modalReducer(state, action) {
       state.isShowModal = action.payload;
     },
   },

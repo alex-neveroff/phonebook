@@ -5,6 +5,7 @@ import { filterReducer, modalReducer } from 'redux/contacts/contactsSlice';
 import Modal from 'components/Modal/Modal';
 import ContactForm from 'components/ContactForm/ContactForm';
 import { ReactComponent as AddIcon } from 'icons/add.svg';
+import { ReactComponent as SearchIcon } from 'icons/search.svg';
 import {
   selectFilter,
   selectIsShowModal,
@@ -27,15 +28,17 @@ const SearchFilter = () => {
       >
         <AddIcon className="icon" width="30" height="30" />
       </button>
-
-      <input
-        className="search-input"
-        id="filter-field"
-        type="text"
-        placeholder="Find contacts by name"
-        value={filter}
-        onChange={handleFilter}
-      />
+      <div className="input-wrap">
+        <SearchIcon className="icon-search" width="24" height="24" />
+        <input
+          className="search-input"
+          id="filter-field"
+          type="text"
+          placeholder="Find contacts by name"
+          value={filter}
+          onChange={handleFilter}
+        />
+      </div>
       {isShowModal && (
         <Modal onClose={() => dispatch(modalReducer(false))}>
           <ContactForm />

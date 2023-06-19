@@ -11,10 +11,14 @@ export const SearchForm = styled.label`
   @media screen and (min-width: 768px) {
     width: 600px;
   }
+  .input-wrap {
+    position: relative;
+    width: 100%;
+  }
   .search-input {
     width: 100%;
     height: 30px;
-    padding-left: 10px;
+    padding-left: 34px;
     margin-bottom: 20px;
     border: none;
     border-radius: 7px;
@@ -55,5 +59,18 @@ export const SearchForm = styled.label`
     pointer-events: none;
     stroke: currentColor;
     fill: currentColor;
+  }
+
+  .icon-search {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+  .search-input:focus + .icon-search {
+    color: red;
   }
 `;

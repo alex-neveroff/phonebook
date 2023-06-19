@@ -15,7 +15,7 @@ const ContactList = () => {
 
   return (
     <Contacts>
-      {showContacts.map(({ id, name, number }, index) => (
+      {showContacts.map(({ id, name, number }) => (
         <ContactListItem key={id} id={id} name={name} number={number} />
       ))}
     </Contacts>

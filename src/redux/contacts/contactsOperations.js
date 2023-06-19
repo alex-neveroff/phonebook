@@ -59,14 +59,19 @@ export const deleteContact = createAsyncThunk(
 
 export const editContact = createAsyncThunk(
   'contacts/editContact',
-  async (contactId, thunkAPI) => {
+  async ({ contactId, name, number }, thunkAPI) => {
     try {
+      console.log(contactId);
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
       authToken.set(persistedToken);
-      const { data } = await axios.delete(`/contacts/${contactId}`);
-      Notify.warning(`${data.name} delete from phonebook.`);
-      return data.id;
+      const { data } = await axios.patch(`/contacts/${contactId}`, {
+        name,
+        number,
+      });
+      Notify.warning(`${data.name} edit in phonebook.`);
+      console.log(data);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
