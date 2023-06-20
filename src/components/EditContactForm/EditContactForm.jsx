@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { editContact } from 'redux/contacts/contactsOperations';
 import { editModalReducer } from 'redux/contacts/contactsSlice';
@@ -94,6 +95,10 @@ const EditContactForm = ({ contact }) => {
       </button>
     </EditForm>
   );
+};
+
+EditContactForm.propTypes = {
+  contact: PropTypes.object.isRequired,
 };
 
 export default EditContactForm;

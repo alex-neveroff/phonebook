@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { registration, login } from 'redux/auth/authOperations';
 import { StyledAuthForm } from './AuthForm.styled';
@@ -96,6 +97,10 @@ const AuthForm = ({ isRegistration }) => {
       )}
     </StyledAuthForm>
   );
+};
+
+AuthForm.propTypes = {
+  isRegistration: PropTypes.bool.isRequired,
 };
 
 export default AuthForm;

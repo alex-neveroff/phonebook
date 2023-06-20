@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaRegTrashAlt, FaRegEdit } from 'react-icons/fa';
@@ -7,7 +8,6 @@ import Modal from 'components/Modal/Modal';
 import EditContactForm from 'components/EditContactForm/EditContactForm';
 import { selectIsShowEditModal } from 'redux/contacts/contactsSelectors';
 import { editModalReducer } from 'redux/contacts/contactsSlice';
-import { useState } from 'react';
 
 const ContactListItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
