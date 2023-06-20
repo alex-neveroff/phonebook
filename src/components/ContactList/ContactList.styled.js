@@ -14,14 +14,19 @@ export const ContactListStyled = styled.div`
       width: 600px;
     }
   }
-
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 0px;
   }
-  &::-webkit-scrollbar-track {
-    background: ${colors.headerBcg};
-  }
-  &::-webkit-scrollbar-thumb {
-    background: ${colors.headerBcg};
+
+  @media screen and (min-width: 768px) {
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: ${colors.headerBcg};
+    }
+    &::-webkit-scrollbar-thumb {
+      background: ${colors.headerBcg};
+    }
   }
 `;
