@@ -3,9 +3,13 @@ import { colors } from 'variables/colors';
 import { transitions } from 'variables/transitions';
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
   margin: 0 auto;
+  height: 100vh;
   @media screen and (min-width: 320px) {
     width: 320px;
   }
@@ -26,12 +30,11 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     background-color: ${colors.mainShadow};
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-radius: 5px;
     @media screen and (min-width: 768px) {
       padding-left: 20px;
       padding-right: 20px;
-      margin-bottom: 30px;
     }
   }
   .navigation {
@@ -65,13 +68,13 @@ export const Container = styled.div`
     font-weight: bold;
     color: ${colors.darkShadow};
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-transform: uppercase;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 30px;
-    }
   }
 
+  .main-content {
+    flex-grow: 1;
+  }
   .main-title {
     font-size: 20px;
     @media screen and (min-width: 768px) {

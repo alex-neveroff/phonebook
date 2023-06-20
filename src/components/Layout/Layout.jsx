@@ -17,7 +17,7 @@ const Layout = () => {
         <Navigation />
         {isAuthorized ? <UserMenu /> : <AuthNav />}
       </header>
-      <main>
+      <main className="main-content">
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
