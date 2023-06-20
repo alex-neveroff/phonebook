@@ -22,8 +22,6 @@ export const Container = styled.div`
     width: 1024px;
   }
   .header {
-    padding-left: 10px;
-    padding-right: 10px;
     padding: 10px 20px;
     height: 80px;
     display: flex;
@@ -51,14 +49,14 @@ export const Container = styled.div`
     font-size: 16px;
     color: ${colors.primary};
     cursor: pointer;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       scale: 1.1;
     }
 
     &.active {
-      text-decoration: underline;
+      border-bottom: 3px solid ${colors.primary};
     }
     @media screen and (min-width: 768px) {
       font-size: 26px;
@@ -71,7 +69,6 @@ export const Container = styled.div`
     margin-bottom: 15px;
     text-transform: uppercase;
   }
-
   .main-content {
     flex-grow: 1;
   }

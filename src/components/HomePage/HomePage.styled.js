@@ -51,10 +51,14 @@ export const HomePageStyled = styled.div`
   }
 
   .info-image {
-    width: 310px;
-    height: 160px;
+    width: 290px;
+    height: 150px;
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0px 0px 10px ${colors.mainShadow};
+    @media screen and (min-width: 768px) {
+      width: 310px;
+      height: 160px;
+    }
   }
 `;

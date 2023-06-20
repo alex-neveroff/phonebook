@@ -3,9 +3,9 @@ import { colors } from 'variables/colors';
 
 export const ContactListStyled = styled.div`
   overflow-y: auto;
-  max-height: calc(100% - (80px + 50px));
-
+  max-height: calc(100% - 100px);
   .contact-list {
+    height: 60vh;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -14,10 +14,6 @@ export const ContactListStyled = styled.div`
       width: 600px;
     }
   }
-  &::-webkit-scrollbar {
-    width: 0px;
-  }
-
   @media screen and (min-width: 768px) {
     &::-webkit-scrollbar {
       width: 8px;
