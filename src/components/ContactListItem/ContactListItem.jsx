@@ -6,15 +6,27 @@ import { ContactData } from './ContactListItem.styled';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import Modal from 'components/Modal/Modal';
 import EditContactForm from 'components/EditContactForm/EditContactForm';
-import { selectIsShowModal } from 'redux/contacts/contactsSelectors';
-import { modalReducer } from 'redux/contacts/contactsSlice';
+import { selectIsShowEditModal } from 'redux/contacts/contactsSelectors';
+import { editModalReducer } from 'redux/contacts/contactsSlice';
+import { useState } from 'react';
 
 const ContactListItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  const isShowModal = useSelector(selectIsShowModal);
+  const isShowEditModal = useSelector(selectIsShowEditModal);
+  const [editContact, setEditContact] = useState(null);
 
   const handleDelete = contactId => {
     dispatch(deleteContact(contactId));
+  };
+
+  const handleEdit = () => {
+    setEditContact({ id, name, number });
+    dispatch(editModalReducer(true));
+  };
+
+  const handleModalClose = () => {
+    setEditContact(null);
+    dispatch(editModalReducer(false));
   };
 
   return (
@@ -24,13 +36,7 @@ const ContactListItem = ({ id, name, number }) => {
         <p className="contact-number">{number}</p>
       </div>
       <div className="button-wrap">
-        <button
-          type="button"
-          className="contact-button"
-          onClick={() => {
-            dispatch(modalReducer(true));
-          }}
-        >
+        <button type="button" className="contact-button" onClick={handleEdit}>
           <EditIcon className="icon" width="24" height="24" />
         </button>
         <button
@@ -41,9 +47,9 @@ const ContactListItem = ({ id, name, number }) => {
           <CrossIcon className="icon" width="24" height="24" />
         </button>
       </div>
-      {isShowModal && (
-        <Modal onClose={() => dispatch(modalReducer(false))}>
-          <EditContactForm contactId={id} name={name} number={number} />
+      {isShowEditModal && editContact && (
+        <Modal onClose={handleModalClose}>
+          <EditContactForm contact={editContact} />
         </Modal>
       )}
     </ContactData>

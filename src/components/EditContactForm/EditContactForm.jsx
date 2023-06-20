@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editContact } from 'redux/contacts/contactsOperations';
-import { modalReducer } from 'redux/contacts/contactsSlice';
+import { editModalReducer } from 'redux/contacts/contactsSlice';
 import { EditForm } from './EditContactForm.styled';
 
-const EditContactForm = ({ name, number, contactId }) => {
+const EditContactForm = ({ contact }) => {
+  const { name, number, id } = contact;
   const [inputName, setInputName] = useState(name);
   const [inputNumber, setInputNumber] = useState(number);
   const dispatch = useDispatch();
-
-  //   console.log(inputName);
-  //   console.log(name);
 
   const handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -24,18 +22,17 @@ const EditContactForm = ({ name, number, contactId }) => {
   const handleSubmit = event => {
     event.preventDefault();
     if (inputName.trim() === '' || inputNumber.trim() === '') {
-      dispatch(modalReducer(true));
+      dispatch(editModalReducer(true));
       return;
     }
     dispatch(
       editContact({
-        contactId,
+        contactId: id,
         name: inputName.trim(),
         number: inputNumber.trim(),
       })
     );
-    dispatch(modalReducer(false));
-    dispatch(editContact(contactId));
+    dispatch(editModalReducer(false));
     reset();
   };
 

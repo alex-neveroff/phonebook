@@ -9,7 +9,8 @@ import {
 const contactsInitialState = {
   contacts: [],
   isLoading: false,
-  isShowModal: false,
+  isShowAddModal: false,
+  isShowEditModal: false,
   error: null,
   filter: '',
 };
@@ -64,7 +65,6 @@ export const contactsSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(editContact.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.isLoading = false;
         state.error = null;
         state.contacts = state.contacts.map(contact => {
@@ -83,10 +83,14 @@ export const contactsSlice = createSlice({
     filterReducer(state, action) {
       state.filter = action.payload.toLowerCase();
     },
-    modalReducer(state, action) {
-      state.isShowModal = action.payload;
+    addModalReducer(state, action) {
+      state.isShowAddModal = action.payload;
+    },
+    editModalReducer(state, action) {
+      state.isShowEditModal = action.payload;
     },
   },
 });
 
-export const { filterReducer, modalReducer } = contactsSlice.actions;
+export const { filterReducer, addModalReducer, editModalReducer } =
+  contactsSlice.actions;

@@ -61,7 +61,6 @@ export const editContact = createAsyncThunk(
   'contacts/editContact',
   async ({ contactId, name, number }, thunkAPI) => {
     try {
-      console.log(contactId);
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
       authToken.set(persistedToken);
@@ -70,7 +69,6 @@ export const editContact = createAsyncThunk(
         number,
       });
       Notify.warning(`${data.name} edit in phonebook.`);
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { addContact } from 'redux/contacts/contactsOperations';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
-import { modalReducer } from 'redux/contacts/contactsSlice';
+import { addModalReducer } from 'redux/contacts/contactsSlice';
 
 const ContactForm = () => {
   const [inputName, setInputName] = useState('');
@@ -36,7 +36,7 @@ const ContactForm = () => {
       return;
     }
     dispatch(addContact(newContact));
-    dispatch(modalReducer(false));
+    dispatch(addModalReducer(false));
     reset();
   };
 

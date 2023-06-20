@@ -1,19 +1,19 @@
 import React from 'react';
 import { SearchForm } from 'components/SearchFilter/SearchFilter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterReducer, modalReducer } from 'redux/contacts/contactsSlice';
+import { filterReducer, addModalReducer } from 'redux/contacts/contactsSlice';
 import Modal from 'components/Modal/Modal';
 import ContactForm from 'components/ContactForm/ContactForm';
 import { ReactComponent as AddIcon } from 'icons/add.svg';
 import { ReactComponent as SearchIcon } from 'icons/search.svg';
 import {
   selectFilter,
-  selectIsShowModal,
+  selectIsShowAddModal,
 } from 'redux/contacts/contactsSelectors';
 
 const SearchFilter = () => {
   const filter = useSelector(selectFilter);
-  const isShowModal = useSelector(selectIsShowModal);
+  const isShowAddModal = useSelector(selectIsShowAddModal);
   const dispatch = useDispatch();
 
   const handleFilter = event => {
@@ -24,7 +24,7 @@ const SearchFilter = () => {
     <SearchForm htmlFor="filter-field">
       <button
         className="contact-button"
-        onClick={() => dispatch(modalReducer(true))}
+        onClick={() => dispatch(addModalReducer(true))}
       >
         <AddIcon className="icon" width="30" height="30" />
       </button>
@@ -39,8 +39,8 @@ const SearchFilter = () => {
           onChange={handleFilter}
         />
       </div>
-      {isShowModal && (
-        <Modal onClose={() => dispatch(modalReducer(false))}>
+      {isShowAddModal && (
+        <Modal onClose={() => dispatch(addModalReducer(false))}>
           <ContactForm />
         </Modal>
       )}
