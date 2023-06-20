@@ -9,7 +9,7 @@ export const Container = styled.div`
   padding-left: 10px;
   padding-right: 10px;
   margin: 0 auto;
-  height: 100vh;
+
   @media screen and (min-width: 320px) {
     width: 320px;
   }
@@ -21,6 +21,7 @@ export const Container = styled.div`
   @media screen and (min-width: 1024px) {
     width: 1024px;
   }
+
   .header {
     padding: 10px 20px;
     height: 80px;
@@ -85,6 +86,11 @@ export const Container = styled.div`
       font-size: 22px;
     }
   }
+
+  .auth-title {
+    margin-top: 20px;
+  }
+
   .menuButton {
     display: flex;
     align-items: center;

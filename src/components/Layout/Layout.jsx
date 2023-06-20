@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Suspense } from 'react';
 import Loader from 'components/Loader/Loader';
 import Navigation from 'components/Navigation/Navigation';
@@ -11,8 +11,11 @@ import Footer from 'components/Footer/Footer';
 
 const Layout = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
-    <Container>
+    <Container style={{ height: isHomePage ? 'auto' : '100vh' }}>
       <header className="header">
         <Navigation />
         {isAuthorized ? <UserMenu /> : <AuthNav />}

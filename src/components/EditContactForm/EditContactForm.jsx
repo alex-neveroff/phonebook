@@ -59,7 +59,7 @@ const EditContactForm = ({ contact }) => {
   };
 
   return (
-    <EditForm onSubmit={handleSubmit} autocomplete="off">
+    <EditForm onSubmit={handleSubmit} autoComplete="off">
       <label className="form-label" htmlFor="contactName">
         Name:
         <input
@@ -72,7 +72,7 @@ const EditContactForm = ({ contact }) => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           onChange={handleChange}
           value={inputName}
-          autocomplete="off"
+          autoComplete="off"
           required
         />
       </label>
@@ -88,7 +88,7 @@ const EditContactForm = ({ contact }) => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           onChange={handleChange}
           value={inputNumber}
-          autocomplete="off"
+          autoComplete="off"
           required
         />
       </label>

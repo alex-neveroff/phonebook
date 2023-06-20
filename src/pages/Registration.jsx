@@ -5,7 +5,7 @@ const Registration = () => {
   const isRegistration = true;
   return (
     <>
-      <h1 className="title sub-title">Registration</h1>
+      <h1 className="title sub-title auth-title">Registration</h1>
       <AuthForm isRegistration={isRegistration} />
     </>
   );
