@@ -26,7 +26,7 @@ export const EditForm = styled.form`
     box-shadow: 0px 0px 10px ${colors.mainShadow};
     transition: box-shadow ${transitions.transition};
     &:focus {
-      box-shadow: 0px 0px 10px ${colors.darkShadow};
+      box-shadow: 0px 0px 10px ${colors.focusShadow};
       outline: none;
     }
   }

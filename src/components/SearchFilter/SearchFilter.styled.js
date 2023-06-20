@@ -73,6 +73,6 @@ export const SearchForm = styled.label`
     transition: fill ${transitions.transition};
   }
   .focused {
-    fill: ${colors.focusShadow};
+    fill: ${colors.iconActive};
   }
 `;

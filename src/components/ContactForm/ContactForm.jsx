@@ -51,7 +51,7 @@ const ContactForm = () => {
   };
 
   return (
-    <PhonebookForm onSubmit={handleSubmit}>
+    <PhonebookForm onSubmit={handleSubmit} autocomplete="off">
       <label className="form-label" htmlFor="contactName">
         Name:
         <input
@@ -64,6 +64,7 @@ const ContactForm = () => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           onChange={handleChange}
           value={inputName}
+          autocomplete="off"
           required
         />
       </label>
@@ -79,6 +80,7 @@ const ContactForm = () => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           onChange={handleChange}
           value={inputNumber}
+          autocomplete="off"
           required
         />
       </label>

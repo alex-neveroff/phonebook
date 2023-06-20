@@ -55,6 +55,7 @@ const AuthForm = ({ isRegistration }) => {
             value={name}
             onChange={handleChange}
             placeholder="Your name"
+            autocomplete="off"
             required
           />
         </label>
@@ -70,6 +71,7 @@ const AuthForm = ({ isRegistration }) => {
           value={email}
           onChange={handleChange}
           placeholder="Your e-mail"
+          autocomplete="off"
           required
         />
       </label>
@@ -83,6 +85,7 @@ const AuthForm = ({ isRegistration }) => {
           value={password}
           onChange={handleChange}
           placeholder="Your password"
+          autocomplete="off"
           required
         />
       </label>
