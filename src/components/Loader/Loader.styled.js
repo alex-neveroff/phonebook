@@ -17,7 +17,7 @@ export const Spinner = styled.div`
     }
   }
   .spinner-icon {
-    color: ${colors.iconHover};
+    color: ${colors.headerBcg};
     width: 100px;
     height: 100px;
   }

@@ -10,7 +10,7 @@ export const FooterStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: ${colors.mainShadow};
+  background-color: ${colors.headerBcg};
   border-radius: 5px;
   @media screen and (min-width: 768px) {
     padding-left: 20px;
@@ -21,7 +21,7 @@ export const FooterStyled = styled.div`
     align-items: center;
     gap: 5px;
     font-weight: 500;
-    color: ${colors.darkShadow};
+    color: ${colors.primary};
   }
   .socialNet {
     display: flex;
@@ -40,9 +40,8 @@ export const FooterStyled = styled.div`
 
     background-color: transparent;
 
-    color: ${colors.darkShadow};
-    transition: color ${transitions.transition},
-      box-shadow ${transitions.transition};
+    color: ${colors.primary};
+    transition: all ${transitions.transition};
 
     &:hover,
     &:focus {
@@ -51,7 +50,7 @@ export const FooterStyled = styled.div`
       color: ${colors.iconHover};
     }
     &:active {
-      color: ${colors.mainShadow};
+      color: ${colors.iconActive};
     }
   }
 `;

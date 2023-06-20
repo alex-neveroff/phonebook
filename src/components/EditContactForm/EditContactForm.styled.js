@@ -21,6 +21,8 @@ export const EditForm = styled.form`
     padding-left: 10px;
     border: none;
     border-radius: 7px;
+    background-color: ${colors.backgroundMain};
+    color: ${colors.primary};
     box-shadow: 0px 0px 10px ${colors.mainShadow};
     transition: box-shadow ${transitions.transition};
     &:focus {
@@ -33,9 +35,10 @@ export const EditForm = styled.form`
     border: none;
     border-radius: 7px;
     margin-top: 15px;
-    background-color: ${colors.mainShadow};
+    background-color: ${colors.headerBcg};
+    color: ${colors.primary};
     box-shadow: 5px 5px 5px ${colors.mainShadow};
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: box-shadow ${transitions.transition},

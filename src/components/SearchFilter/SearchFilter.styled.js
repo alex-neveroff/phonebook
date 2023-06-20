@@ -22,10 +22,12 @@ export const SearchForm = styled.label`
     margin-bottom: 20px;
     border: none;
     border-radius: 7px;
+    color: ${colors.primary};
+    background-color: ${colors.backgroundMain};
     box-shadow: 0px 0px 10px ${colors.mainShadow};
     transition: box-shadow ${transitions.transition};
     &:focus {
-      box-shadow: 0px 0px 10px ${colors.darkShadow};
+      box-shadow: 0px 0px 10px ${colors.focusShadow};
       outline: none;
     }
   }
@@ -38,7 +40,7 @@ export const SearchForm = styled.label`
 
     background-color: transparent;
 
-    color: ${colors.darkShadow};
+    color: ${colors.primary};
     transition: color ${transitions.transition},
       box-shadow ${transitions.transition};
 
@@ -49,7 +51,7 @@ export const SearchForm = styled.label`
       color: ${colors.iconHover};
     }
     &:active {
-      color: ${colors.mainShadow};
+      color: ${colors.iconActive};
     }
   }
   .icon {
@@ -64,10 +66,13 @@ export const SearchForm = styled.label`
   .icon-search {
     position: absolute;
     top: 4px;
-    left: 3px;
+    left: 4px;
     width: 20px;
     height: 20px;
-    stroke: currentColor;
     fill: currentColor;
+    transition: fill ${transitions.transition};
+  }
+  .focused {
+    fill: ${colors.focusShadow};
   }
 `;

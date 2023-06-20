@@ -29,7 +29,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: ${colors.mainShadow};
+    background-color: ${colors.headerBcg};
     margin-bottom: 15px;
     border-radius: 5px;
     @media screen and (min-width: 768px) {
@@ -49,7 +49,7 @@ export const Container = styled.div`
   .navigationLink {
     font-weight: bold;
     font-size: 16px;
-    color: ${colors.darkShadow};
+    color: ${colors.primary};
     cursor: pointer;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -66,7 +66,7 @@ export const Container = styled.div`
   }
   .title {
     font-weight: bold;
-    color: ${colors.darkShadow};
+    color: ${colors.primary};
     text-align: center;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -94,12 +94,11 @@ export const Container = styled.div`
     justify-content: center;
     height: 25px;
     width: 70px;
-    border: 1px solid ${colors.mainShadow};
+    border: 1px solid ${colors.primary};
     border-radius: 5px;
-    box-shadow: 5px 5px 5px ${colors.mainShadow};
     font-size: 12px;
     font-weight: bold;
-    color: ${colors.darkShadow};
+    color: ${colors.primary};
     cursor: pointer;
     transition: box-shadow ${transitions.transition},
       transform ${transitions.transition};

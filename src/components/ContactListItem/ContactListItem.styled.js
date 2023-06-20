@@ -39,7 +39,7 @@ export const ContactData = styled.li`
 
     background-color: transparent;
 
-    color: ${colors.darkShadow};
+    color: ${colors.primary};
     transition: color ${transitions.transition},
       box-shadow ${transitions.transition};
 
@@ -50,7 +50,7 @@ export const ContactData = styled.li`
       color: ${colors.iconHover};
     }
     &:active {
-      color: ${colors.mainShadow};
+      color: ${colors.iconActive};
     }
   }
   .icon {

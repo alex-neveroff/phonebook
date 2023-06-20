@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SearchForm } from 'components/SearchFilter/SearchFilter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { filterReducer, addModalReducer } from 'redux/contacts/contactsSlice';
@@ -13,7 +13,16 @@ import {
 const SearchFilter = () => {
   const filter = useSelector(selectFilter);
   const isShowAddModal = useSelector(selectIsShowAddModal);
+  const [isFocused, setIsFocused] = useState(false);
   const dispatch = useDispatch();
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
 
   const handleFilter = event => {
     dispatch(filterReducer(event.currentTarget.value));
@@ -28,7 +37,7 @@ const SearchFilter = () => {
         <FaRegPlusSquare className="icon" />
       </button>
       <div className="input-wrap">
-        <FaSearch className="icon-search" />
+        <FaSearch className={`icon-search ${isFocused ? 'focused' : ''}`} />
         <input
           className="search-input"
           id="filter-field"
@@ -36,6 +45,8 @@ const SearchFilter = () => {
           placeholder="Find contacts by name"
           value={filter}
           onChange={handleFilter}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       </div>
       {isShowAddModal && (

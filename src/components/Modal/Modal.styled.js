@@ -10,14 +10,13 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: ${colors.mainShadow}; */
   z-index: 150;
 `;
 
 export const ModalWindow = styled.div`
   padding: 20px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: ${colors.backgroundMain};
   overflow: hidden;
   box-shadow: 0px 0px 10px ${colors.mainShadow};
   @media screen and (min-width: 768px) {

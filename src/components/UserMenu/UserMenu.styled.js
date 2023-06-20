@@ -11,7 +11,7 @@ export const StyledUserMenu = styled.div`
   .userName {
     font-size: 12px;
     font-weight: bold;
-    color: ${colors.darkShadow};
+    color: ${colors.primary};
     @media screen and (min-width: 768px) {
       font-size: 16px;
     }
