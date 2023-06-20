@@ -6,7 +6,7 @@ export const Spinner = styled.div`
   top: 40%;
   left: 50%;
   display: inline-block;
-  animation: spin 2s linear infinite;
+  animation: spin 3s linear infinite;
 
   @keyframes spin {
     0% {
