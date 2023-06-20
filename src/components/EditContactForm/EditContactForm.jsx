@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { editContact } from 'redux/contacts/contactsOperations';
 import { editModalReducer } from 'redux/contacts/contactsSlice';
 import { EditForm } from './EditContactForm.styled';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { Notify } from 'notiflix';
 
 const EditContactForm = ({ contact }) => {
   const { name, number, id } = contact;
   const [inputName, setInputName] = useState(name);
   const [inputNumber, setInputNumber] = useState(number);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleChange = event => {
@@ -23,6 +26,19 @@ const EditContactForm = ({ contact }) => {
     event.preventDefault();
     if (inputName.trim() === '' || inputNumber.trim() === '') {
       dispatch(editModalReducer(true));
+      return;
+    }
+    const loweredEditContact = inputName.trim().toLowerCase();
+    const numberEditContact = inputNumber.trim();
+    const isContactExists = contacts.some(
+      contact =>
+        contact.name.toLowerCase() === loweredEditContact &&
+        contact.number === numberEditContact
+    );
+    if (isContactExists) {
+      Notify.failure(
+        `${inputName.trim()} with phone ${inputNumber.trim()} is already in phonebook.`
+      );
       return;
     }
     dispatch(

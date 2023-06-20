@@ -7,6 +7,7 @@ import { selectIsAuthorized } from 'redux/auth/authSelectors';
 import UserMenu from 'components/UserMenu/UserMenu';
 import AuthNav from 'components/AuthNav/AuthNav';
 import { Container } from './Layoyt.styled';
+import Footer from 'components/Footer/Footer';
 
 const Layout = () => {
   const isAuthorized = useSelector(selectIsAuthorized);
@@ -21,6 +22,9 @@ const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </Container>
   );
 };

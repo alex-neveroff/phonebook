@@ -24,15 +24,20 @@ const ContactForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const newContact = {
-      name: inputName,
-      number: inputNumber,
+      name: inputName.trim(),
+      number: inputNumber.trim(),
     };
     const loweredNewContact = newContact.name.toLowerCase();
+    const numberNewContact = newContact.number;
     const isContactExists = contacts.some(
-      contact => contact.name.toLowerCase() === loweredNewContact
+      contact =>
+        contact.name.toLowerCase() === loweredNewContact &&
+        contact.number === numberNewContact
     );
     if (isContactExists) {
-      Notify.failure(`${newContact.name} is already in phonebook.`);
+      Notify.failure(
+        `${newContact.name} with phone ${newContact.number} is already in phonebook.`
+      );
       return;
     }
     dispatch(addContact(newContact));

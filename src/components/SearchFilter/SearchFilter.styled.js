@@ -46,7 +46,7 @@ export const SearchForm = styled.label`
     &:focus {
       box-shadow: 0px 0px 15px ${colors.focusShadow};
       outline: none;
-      color: red;
+      color: ${colors.iconHover};
     }
     &:active {
       color: ${colors.mainShadow};
@@ -65,12 +65,9 @@ export const SearchForm = styled.label`
     position: absolute;
     top: 4px;
     left: 3px;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     stroke: currentColor;
     fill: currentColor;
-  }
-  .search-input:focus + .icon-search {
-    color: red;
   }
 `;

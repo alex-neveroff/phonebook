@@ -3,4 +3,5 @@ export const colors = {
   mainShadow: 'rgba(0, 0, 0, 0.2)',
   focusShadow: 'rgba(0, 0, 0, 0.4)',
   darkShadow: 'rgba(0, 0, 0, 0.8)',
+  iconHover: '#ff0000',
 };

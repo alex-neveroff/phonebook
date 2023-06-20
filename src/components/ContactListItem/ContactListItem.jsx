@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { ReactComponent as CrossIcon } from 'icons/cross.svg';
-import { ReactComponent as EditIcon } from 'icons/edit.svg';
+import { FaRegTrashAlt, FaRegEdit } from 'react-icons/fa';
 import { ContactData } from './ContactListItem.styled';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import Modal from 'components/Modal/Modal';
@@ -37,14 +36,14 @@ const ContactListItem = ({ id, name, number }) => {
       </div>
       <div className="button-wrap">
         <button type="button" className="contact-button" onClick={handleEdit}>
-          <EditIcon className="icon" width="24" height="24" />
+          <FaRegEdit className="icon" />
         </button>
         <button
           type="button"
           className="contact-button"
           onClick={() => handleDelete(id)}
         >
-          <CrossIcon className="icon" width="24" height="24" />
+          <FaRegTrashAlt className="icon" />
         </button>
       </div>
       {isShowEditModal && editContact && (

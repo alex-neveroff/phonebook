@@ -28,6 +28,9 @@ export const ContactData = styled.li`
     gap: 4px;
   }
   .contact-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     width: 24px;
     height: 24px;
@@ -44,7 +47,7 @@ export const ContactData = styled.li`
     &:focus {
       box-shadow: 0px 0px 15px ${colors.focusShadow};
       outline: none;
-      color: red;
+      color: ${colors.iconHover};
     }
     &:active {
       color: ${colors.mainShadow};
@@ -52,8 +55,8 @@ export const ContactData = styled.li`
   }
   .icon {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
     pointer-events: none;
     stroke: currentColor;
     fill: currentColor;

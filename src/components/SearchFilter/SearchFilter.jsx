@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filterReducer, addModalReducer } from 'redux/contacts/contactsSlice';
 import Modal from 'components/Modal/Modal';
 import ContactForm from 'components/ContactForm/ContactForm';
-import { ReactComponent as AddIcon } from 'icons/add.svg';
-import { ReactComponent as SearchIcon } from 'icons/search.svg';
+import { FaSearch, FaRegPlusSquare } from 'react-icons/fa';
 import {
   selectFilter,
   selectIsShowAddModal,
@@ -26,10 +25,10 @@ const SearchFilter = () => {
         className="contact-button"
         onClick={() => dispatch(addModalReducer(true))}
       >
-        <AddIcon className="icon" width="30" height="30" />
+        <FaRegPlusSquare className="icon" />
       </button>
       <div className="input-wrap">
-        <SearchIcon className="icon-search" width="24" height="24" />
+        <FaSearch className="icon-search" />
         <input
           className="search-input"
           id="filter-field"

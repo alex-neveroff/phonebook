@@ -5,7 +5,7 @@ import { transitions } from 'variables/transitions';
 export const Container = styled.div`
   padding-left: 10px;
   padding-right: 10px;
-  margin: 0 auto 50px;
+  margin: 0 auto;
   @media screen and (min-width: 320px) {
     width: 320px;
   }
