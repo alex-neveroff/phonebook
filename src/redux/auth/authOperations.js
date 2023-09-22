@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://phonebook-backend-kyyd.onrender.com';
 
 const authToken = {
   set(token) {
@@ -17,7 +17,7 @@ export const registration = createAsyncThunk(
   'auth/registration',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('users/signup', credentials);
+      const { data } = await axios.post('users/register', credentials);
       authToken.set(data.token);
       Notify.success('You have successfully registered');
       return data;
@@ -43,18 +43,6 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-  try {
-    const { data } = await axios.post('users/logout');
-    authToken.unset();
-    Notify.warning('You have successfully logged out');
-    return data;
-  } catch (error) {
-    Notify.failure(`Logout error: ${error.message}`);
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
-
 export const refreshCurrentUser = createAsyncThunk(
   'auth/current',
   async (_, thunkAPI) => {
@@ -74,3 +62,15 @@ export const refreshCurrentUser = createAsyncThunk(
     }
   }
 );
+
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    const { data } = await axios.post('users/logout');
+    authToken.unset();
+    Notify.warning('You have successfully logged out');
+    return data;
+  } catch (error) {
+    Notify.failure(`Logout error: ${error.message}`);
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

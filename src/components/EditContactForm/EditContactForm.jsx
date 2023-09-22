@@ -8,7 +8,7 @@ import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { Notify } from 'notiflix';
 
 const EditContactForm = ({ contact }) => {
-  const { name, number, id } = contact;
+  const { name, number, _id } = contact;
   const [inputName, setInputName] = useState(name);
   const [inputNumber, setInputNumber] = useState(number);
   const contacts = useSelector(selectContacts);
@@ -44,7 +44,7 @@ const EditContactForm = ({ contact }) => {
     }
     dispatch(
       editContact({
-        contactId: id,
+        contactId: _id,
         name: inputName.trim(),
         number: inputNumber.trim(),
       })

@@ -16,8 +16,8 @@ const ContactList = () => {
   return (
     <ContactListStyled>
       <ul className="contact-list">
-        {showContacts.map(({ id, name, number }) => (
-          <ContactListItem key={id} id={id} name={name} number={number} />
+        {showContacts.map(({ _id, name, number }) => (
+          <ContactListItem key={_id} _id={_id} name={name} number={number} />
         ))}
       </ul>
     </ContactListStyled>

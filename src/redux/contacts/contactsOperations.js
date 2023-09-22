@@ -27,29 +27,29 @@ export const addContact = createAsyncThunk(
   }
 );
 
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  async (contactId, thunkAPI) => {
+export const editContact = createAsyncThunk(
+  'contacts/editContact',
+  async ({ contactId, name, number }, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`/contacts/${contactId}`);
-      Notify.warning(`${data.name} delete from phonebook.`);
-      return data.id;
+      const { data } = await axios.put(`/contacts/${contactId}`, {
+        name,
+        number,
+      });
+      Notify.warning(`${data.name} edit in phonebook.`);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const editContact = createAsyncThunk(
-  'contacts/editContact',
-  async ({ contactId, name, number }, thunkAPI) => {
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async (contactId, thunkAPI) => {
     try {
-      const { data } = await axios.patch(`/contacts/${contactId}`, {
-        name,
-        number,
-      });
-      Notify.warning(`${data.name} edit in phonebook.`);
-      return data;
+      const { data } = await axios.delete(`/contacts/${contactId}`);
+      Notify.warning(`${data.name} delete from phonebook.`);
+      return data._id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

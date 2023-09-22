@@ -9,7 +9,7 @@ import EditContactForm from 'components/EditContactForm/EditContactForm';
 import { selectIsShowEditModal } from 'redux/contacts/contactsSelectors';
 import { editModalReducer } from 'redux/contacts/contactsSlice';
 
-const ContactListItem = ({ id, name, number }) => {
+const ContactListItem = ({ _id, name, number }) => {
   const dispatch = useDispatch();
   const isShowEditModal = useSelector(selectIsShowEditModal);
   const [editContact, setEditContact] = useState(null);
@@ -19,7 +19,7 @@ const ContactListItem = ({ id, name, number }) => {
   };
 
   const handleEdit = () => {
-    setEditContact({ id, name, number });
+    setEditContact({ _id, name, number });
     dispatch(editModalReducer(true));
   };
 
@@ -29,7 +29,7 @@ const ContactListItem = ({ id, name, number }) => {
   };
 
   return (
-    <ContactData key={id}>
+    <ContactData key={_id}>
       <div className="contact-align">
         <p className="contact-name">{name}</p>
         <p className="contact-number">{number}</p>
@@ -41,7 +41,7 @@ const ContactListItem = ({ id, name, number }) => {
         <button
           type="button"
           className="contact-button"
-          onClick={() => handleDelete(id)}
+          onClick={() => handleDelete(_id)}
         >
           <FaRegTrashAlt className="icon" />
         </button>
@@ -56,7 +56,7 @@ const ContactListItem = ({ id, name, number }) => {
 };
 
 ContactListItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
 };
